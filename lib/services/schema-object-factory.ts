@@ -33,6 +33,7 @@ import { isDateCtor } from '../utils/is-date-ctor.util';
 import { ModelPropertiesAccessor } from './model-properties-accessor';
 import { ParamWithTypeMetadata } from './parameter-metadata-accessor';
 import { SwaggerTypesMapper } from './swagger-types-mapper';
+import { ApiSchemaOptions } from '../decorators';
 
 export class SchemaObjectFactory {
   constructor(
@@ -229,8 +230,16 @@ export class SchemaObjectFactory {
     if (typeDefinitionRequiredFields.length > 0) {
       typeDefinition['required'] = typeDefinitionRequiredFields;
     }
-    schemas[type.name] = typeDefinition;
-    return type.name;
+    const customSchema: ApiSchemaOptions[] = Reflect.getOwnMetadata(
+      DECORATORS.API_SCHEMA,
+      type
+    );
+    const schemaName =
+      customSchema && customSchema.length === 1
+        ? customSchema[0].name
+        : type.name;
+    schemas[schemaName] = typeDefinition;
+    return schemaName;
   }
 
   mergePropertyWithMetadata(
