@@ -1,25 +1,24 @@
-# @nestjs/swagger (Fork)
+# @icecat-studio/nestjs-swagger
 
-This is a fork of the original [@nestjs/swagger](https://github.com/nestjs/swagger) package with an additional `@ApiSchema` decorator.
+## DEPRECATED
 
-The `@ApiSchema` decorator allows renaming DTO classes for schema generation in Swagger. For example, you can rename a class `UserCreateDto` to `UserCreateRequest` when generating the API documentation.
+This package is deprecated. Please use the original [`@nestjs/swagger`](https://www.npmjs.com/package/@nestjs/swagger) package instead.
 
-### Example:
+The `@ApiSchema` decorator, which was the reason this fork existed, is now available in the official `@nestjs/swagger` package.
 
-```typescript
-import { ApiSchema } from '@nestjs/swagger';
+### Migration
 
-@ApiSchema({ name: 'UserCreateRequest' })
-export class UserCreateDto {
-  // DTO properties
-}
+```bash
+npm uninstall @icecat-studio/nestjs-swagger
+npm install @nestjs/swagger
 ```
 
-### Addresses the Following Issues
+Update your imports:
 
-This feature resolves the following issues from the original repository:
+```typescript
+// Before
+import { ApiSchema } from '@icecat-studio/nestjs-swagger';
 
-- [Pull Request #983](https://github.com/nestjs/swagger/pull/983)
-- [Issue #1596](https://github.com/nestjs/swagger/issues/1596)
-
-By using this decorator, you can easily customize how your DTOs appear in Swagger’s generated schemas, without needing to modify the actual class names in your codebase.
+// After
+import { ApiSchema } from '@nestjs/swagger';
+```

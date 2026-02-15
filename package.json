@@ -1,7 +1,8 @@
 {
   "name": "@icecat-studio/nestjs-swagger",
-  "version": "7.4.2-1",
-  "description": "Nest - modern, fast, powerful node.js web framework (@swagger)",
+  "version": "7.4.2-2",
+  "description": "DEPRECATED: Use @nestjs/swagger instead",
+  "deprecated": "This package is deprecated. Please use the original @nestjs/swagger package instead.",
   "author": "Ruslan Matiushev",
   "license": "MIT",
   "repository": "https://github.com/icecatstudio/nestjs-swagger",
